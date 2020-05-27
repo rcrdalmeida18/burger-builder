@@ -6,10 +6,16 @@ import classes from './SideDrawer.css';
 import Auxiliary from '../../../hoc/Auxiliary';
 
 const sideDrawer = (props) => {
+    let attachedClasses = [classes.SideDrawer, classes.Close];
+    
+    if(props.open) {
+        attachedClasses = [classes.SideDrawer, classes.Open];
+    }
+
     return (
         <Auxiliary>
-            <Backdrop show/>
-            <div className={classes.SideDrawer}>
+            <Backdrop show={props.open} click={props.closed}/>
+            <div className={attachedClasses.join(' ')}>
                 <div className={classes.Logo}>
                     <Logo />
                 </div>
